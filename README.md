@@ -1,6 +1,6 @@
 # Angular Component Kit
 
-This is an angular.js common component kit. The main idea of this project is to provide a common and easy use angular component kit.
+This is an angular.js common component kit. The main idea of this project is to provide a common and easy use angular component kit. [http://serenader2014.github.io/angular-component-kit/](http://serenader2014.github.io/angular-component-kit/)
 
 ## How to use
 
