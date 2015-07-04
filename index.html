@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="UTF-8">
+    <title>Angular Component Kit Demo</title>
+    <link rel="stylesheet" href="dist/css/angular-component-kit.css">
+    <style>
+        body {
+            padding: 50px;
+        }
+    </style>
+</head>
+<body ng-controller="ctrl">
+
+    <input type="text" ck-input ng-model="welcome" desc="'This is welcome text.'" ng-minlength="6">
+
+    <script type="text/javascript" src="dist/libs/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="dist/libs/angular/angular.min.js"></script>
+    <script type="text/javascript" src="dist/js/angular-component-kit.js"></script>
+    <script type="text/javascript" src="dist/js/app.js"></script>
+</body>
+</html>
