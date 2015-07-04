@@ -1,8 +1,0 @@
-{
-    "name": "angular-component-kit",
-    "version": "0.1.0",
-    "dependencies": {
-        "angular": "latest",
-        "jquery": "latest"
-    }
-}
