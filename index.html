@@ -2,17 +2,24 @@
 <html lang="en" ng-app="app">
 <head>
     <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta name="robots" content="index,follow">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
     <title>Angular Component Kit Demo</title>
     <link rel="stylesheet" href="build/angular-component-kit.min.css">
     <style>
         html {
             padding: 0;
             margin: 0;
+            font-size: 16px;
             font-family: "Merriweather", serif, 'Helvetica Neue','Hiragino Sans GB','Microsoft YaHei','WenQuanYi Micro Hei';
         }
         body {
-            width: 980px;
+            max-width: 980px;
             margin: 50px auto;
+            padding: 20px;
             background: #eee;
         }
         code {
@@ -27,6 +34,7 @@
             padding: 15px;
             border: 1px solid #eee;
             border-radius: 5px;
+            word-wrap: break-word;
         }
         pre code {
             background: none;
@@ -42,11 +50,17 @@
             font-size: 20px;
             margin-bottom: 30px;
             font-style: italic;
+            text-align: center;
         }
         .component-item {
             background: white;
             padding: 20px;
+            margin-bottom: 20px;
             border: 1px solid #ccc;
+            transition: all 0.3s;
+        }
+        .component-item:hover {
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
         .demo {
             margin: 20px 0;
@@ -59,29 +73,12 @@
     <h1 class="title">Angular Component kit</h1>
     <p class="description">A set of easy use, and common component kit. The main idea is to help developer to quick develop.</p>
 
-    <div class="component-item">
-        <h2><code>ck-input</code> directive</h2>
-        <p>Demo:</p>
-        <div class="demo">
-            <form action="" name="form">
-                <input name="input" type="text" ck-input ng-model="welcome" desc="'This is welcome text.'" ng-minlength="6">
-            </form>
-            <p>The input's value is <span>{{welcome}}</span></p>
-            <p>The input's error : <span>{{form.input.$error}}</span></p>
-        </div>
-        <p>Code:</p>
-        <pre><code>&ltinput type="text" ck-input ng-model="welcome" desc="'This is welcome text.'" ng-minlength="6" &gt</code></pre>
-    </div>
+    <demo ng-repeat="component in components" name="component.name" tmpl="component.tmpl"></demo>
 
-    <script type="text/javascript" src="build/jquery.min.js"></script>
-    <script type="text/javascript" src="build/angular.min.js"></script>
+    <script type="text/javascript" src="dist/libs/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="dist/libs/angular/angular.min.js"></script>
+    <script type="text/javascript" src="dist/libs/angular-sanitize/angular-sanitize.min.js"></script>
     <script type="text/javascript" src="build/angular-component-kit.min.js"></script>
-    <script>
-        var app = angular.module('app', ['ngComponentKit']);
-
-        app.controller('ctrl', ['$scope', function ($scope) {
-            $scope.welcome = 'hello world';
-        }]);
-    </script>
+    <script type="text/javascript" src="dist/js/app.js"></script>
 </body>
 </html>
