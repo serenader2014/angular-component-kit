@@ -208,3 +208,89 @@
     background: $button-background;
 }
 
+/* -- ck modal style start -- */
+.ck-modal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    // transition: all 0.3s;
+    // animation: show 0.3s;
+}
+.ck-modal-wrapper {
+    position: absolute;
+    background: $white;
+    box-shadow: $shadow-3;
+    width: 800px;
+    user-select: none;
+    transition: all 0.3s;
+}
+
+.ck-modal.ng-hide-add.ng-hide-add-active {
+    // animation: hide 0.3s;
+}
+
+.ck-modal-head {
+    position: relative;
+    padding: $size-base 2*$size-base;
+    background: $blue;
+    color: $white;
+    cursor: move;
+    font-size: $size-large;
+    .ck-modal-close {
+        position: absolute;
+        right: 0;
+        top: 0;
+        padding: 0;
+        width: 5*$size-base;
+        height: 4.2*$size-base;
+        font-size: $size-large;
+        border-radius: 0;
+    }
+}
+
+.ck-modal-body {
+    padding: 2*$size-base;
+    min-height: 200px;
+}
+
+.ck-modal-foot {
+    padding: $size-base 2*$size-base;
+    border-top: 1px solid $light-grey;
+    button {
+        float: right;
+        padding: 0.7*$size-base $size-base;
+        margin-left: 2*$size-base;
+        width: 8*$size-base;
+    }
+    &:after {
+        content: '';
+        display: block;
+        clear: both;
+    }
+}
+
+@keyframes show {
+    0% {
+        transform: scale(0.2);
+    }
+    80% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes hide {
+    0% {
+        transform: scale(1);
+    }
+    30% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(0);
+    }
+}
