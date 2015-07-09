@@ -226,14 +226,10 @@
 /* -- ck modal style start -- */
 .ck-modal {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-
-.ck-modal-wrapper {
-  position: absolute;
+  -webkit-transition: all 0.3s;
+          transition: all 0.3s;
+  -webkit-animation: show 0.3s;
+          animation: show 0.3s;
   background: #ffffff;
   box-shadow: 0px 17px 50px rgba(0, 0, 0, 0.19);
   width: 800px;
@@ -241,8 +237,12 @@
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-  -webkit-transition: all 0.3s;
-          transition: all 0.3s;
+  z-index: 1;
+}
+
+.ck-modal.ng-hide-add.ng-hide-add-active {
+  -webkit-animation: hide 0.3s;
+          animation: hide 0.3s;
 }
 
 .ck-modal-head {
@@ -267,6 +267,7 @@
 .ck-modal-body {
   padding: 20px;
   min-height: 200px;
+  overflow: auto;
 }
 
 .ck-modal-foot {
@@ -290,10 +291,6 @@
     -webkit-transform: scale(0.2);
             transform: scale(0.2);
   }
-  80% {
-    -webkit-transform: scale(1.05);
-            transform: scale(1.05);
-  }
   100% {
     -webkit-transform: scale(1);
             transform: scale(1);
@@ -305,10 +302,6 @@
     -webkit-transform: scale(0.2);
             transform: scale(0.2);
   }
-  80% {
-    -webkit-transform: scale(1.05);
-            transform: scale(1.05);
-  }
   100% {
     -webkit-transform: scale(1);
             transform: scale(1);
@@ -318,10 +311,6 @@
   0% {
     -webkit-transform: scale(1);
             transform: scale(1);
-  }
-  30% {
-    -webkit-transform: scale(1.05);
-            transform: scale(1.05);
   }
   100% {
     -webkit-transform: scale(0);
@@ -333,12 +322,17 @@
     -webkit-transform: scale(1);
             transform: scale(1);
   }
-  30% {
-    -webkit-transform: scale(1.05);
-            transform: scale(1.05);
-  }
   100% {
     -webkit-transform: scale(0);
             transform: scale(0);
+  }
+}
+@media screen and (max-width: 800px) {
+  .ck-modal {
+    width: 100%;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
   }
 }

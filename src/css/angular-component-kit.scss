@@ -211,24 +211,17 @@
 /* -- ck modal style start -- */
 .ck-modal {
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    // transition: all 0.3s;
-    // animation: show 0.3s;
-}
-.ck-modal-wrapper {
-    position: absolute;
+    transition: all 0.3s;
+    animation: show 0.3s;
     background: $white;
     box-shadow: $shadow-3;
     width: 800px;
     user-select: none;
-    transition: all 0.3s;
+    z-index: 1;
 }
 
 .ck-modal.ng-hide-add.ng-hide-add-active {
-    // animation: hide 0.3s;
+    animation: hide 0.3s;
 }
 
 .ck-modal-head {
@@ -253,6 +246,7 @@
 .ck-modal-body {
     padding: 2*$size-base;
     min-height: 200px;
+    overflow: auto;
 }
 
 .ck-modal-foot {
@@ -275,9 +269,6 @@
     0% {
         transform: scale(0.2);
     }
-    80% {
-        transform: scale(1.05);
-    }
     100% {
         transform: scale(1);
     }
@@ -287,10 +278,17 @@
     0% {
         transform: scale(1);
     }
-    30% {
-        transform: scale(1.05);
-    }
     100% {
         transform: scale(0);
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .ck-modal {
+        width: 100%;
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0;
     }
 }
