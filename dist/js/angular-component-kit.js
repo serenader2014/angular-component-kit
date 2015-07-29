@@ -100,7 +100,8 @@ angular.module('ngComponentKit').directive('ckInput', ['$compile', function ($co
 }]);
 angular.module('ngComponentKit').directive('ckModal', function () {
     return {
-        template: ['<div ng-show="show" class="ck-modal" ck-drag=".ck-modal-head" >',
+        template: ['<div tabindex="-1" ng-class="{active: active}" ng-blur="blur()"',
+            'ng-focus="focus()" ng-show="show" class="ck-modal" ck-drag=".ck-modal-head" >',
             '<div class="ck-modal-head">{{title}}</div>',
             '<div class="ck-modal-body" ng-transclude></div>',
             '<div class="ck-modal-foot">',
@@ -110,20 +111,22 @@ angular.module('ngComponentKit').directive('ckModal', function () {
             ].join(''),
         transclude: true,
         scope: {
-            title: '=name',
+            title  : '=name',
             confirm: '&',
-            close: '&',
-            show: '='
+            close  : '&',
+            show   : '='
         },
         link: function (scope, element, attr) {
             function closeModal () {
                 scope.show = false;
             }
-            var doc = angular.element(document);
+            var doc          = angular.element(document);
             var screenHeight = angular.element(window).height();
-            var screenWidth = angular.element(window).width();
+            var screenWidth  = angular.element(window).width();
+            scope.active = false;
             if (screenWidth > 800) {
                 scope.$watch('show', function (show) {
+                    scope.active = !!show;
                     if (show) {
                         element.css({
                             top: doc.scrollTop() +200,
@@ -154,6 +157,14 @@ angular.module('ngComponentKit').directive('ckModal', function () {
                 } else {
                     closeModal();
                 }
+            };
+
+            scope.blur = function () {
+                scope.active = false;
+            };
+
+            scope.focus = function () {
+                scope.active = true;
             };
         },
         replace: true

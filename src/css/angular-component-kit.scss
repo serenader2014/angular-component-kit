@@ -217,7 +217,12 @@
     box-shadow: $shadow-3;
     width: 800px;
     user-select: none;
+    outline: none;
     z-index: 1;
+}
+
+.ck-modal.active {
+    z-index: 2;
 }
 
 .ck-modal.ng-hide-add.ng-hide-add-active {

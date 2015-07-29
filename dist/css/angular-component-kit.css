@@ -237,7 +237,12 @@
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  outline: none;
   z-index: 1;
+}
+
+.ck-modal.active {
+  z-index: 2;
 }
 
 .ck-modal.ng-hide-add.ng-hide-add-active {
