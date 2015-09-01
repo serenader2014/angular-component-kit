@@ -2,9 +2,9 @@
     "name"   : "angular-component-kit",
     "version": "0.1.0",
     "dependencies": {
-        "angular"         : "1.4.1",
         "jquery"          : "latest",
-        "angular-sanitize": "1.4.1",
-        "angular-animate" : "1.4.1"
+        "angular"         : "1.4.1",
+        "angular-animate" : "1.4.1",
+        "angular-sanitize": "1.4.1"
     }
 }

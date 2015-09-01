@@ -23,7 +23,7 @@ app.controller('ctrl', ['$scope', '$http', '$timeout', function ($scope, $http, 
     };
     $scope.testModal = 'this is original content';
     angular.forEach(componentsList, function (item) {
-        $http.get('dist/tmpl/' + item + '.html').success(function (data) {
+        $http.get('tmpl/' + item + '.html').success(function (data) {
             $scope.components.push({
                 name: item,
                 tmpl: data

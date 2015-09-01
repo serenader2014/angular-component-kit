@@ -2,6 +2,7 @@
       "browser": true,
       "jquery": true,
       "nomen": false,
+      "node": true,
       "strict": false,
       "sub": true,
       "eqeqeq": true,
