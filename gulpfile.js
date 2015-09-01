@@ -4,9 +4,9 @@ var bowerFile   = require('main-bower-files');
 var browserSync = require('browser-sync');
 var $           = require('gulp-load-plugins')();
 
-gulp.task('deploy', ['prod'], function () {
+gulp.task('deploy',  function () {
     return gulp.src('prod/**/*')
-    .pipe($.ghPages());
+    .pipe($.ghPages({remoteUrl: 'git@github.com:serenader2014/angular-component-kit.git'}));
 });
 
 gulp.task('clean', function () {
