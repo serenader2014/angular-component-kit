@@ -1,0 +1,77 @@
+<div>
+    <p>Simple example to show how <code>ck-progress-bar</code> works</p>
+    <button class="ck-btn ck-btn-raised ck-btn-blue" ng-click="showLoading()" ck-ripple>Show loading</button>
+    <button class="ck-btn ck-btn-raised ck-btn-red" ng-click="stopLoading()" ck-ripple>Stop loading</button>
+</div>
+<div>
+    <h3>More complicated example</h3>
+    <p>Intergrate with http interceptors, when a http request was made, it will show the progress bar. When the request was responsed, the progress bar will hide.</p>
+    <button class="ck-btn ck-btn-raised ck-btn-yellow" ck-ripple ng-click="makeRequest()">Make a request</button>
+    <p>Example code like this:</p>
+    <pre>
+        <code class="language-javascript">
+app.factory('networkProgress', function ($rootScope, ckProgressBar) {
+    var url = [];
+    var progress = ckProgressBar.createInstance();
+
+    $rootScope.$watch('loadingItem', function (value) {
+        if (value && value.length) {
+            var flag = false;
+            angular.forEach(value, function (item) {
+                angular.forEach(url, function (u) {
+                    var regexp = new RegExp(u);
+                    if (regexp.test(item)) {
+                        flag = true;
+                    }
+                });
+            });
+            if (!flag) {
+                progress.start();
+                progress.increase(true);
+            }
+        } else {
+            progress.end();
+        }
+    }, true);
+
+    return {
+        filter: function (urls) {
+            angular.forEach(urls, function (u) {
+                if (url.indexOf(u) === -1) {
+                    url.push(u);
+                }
+            });
+        },
+        instance: function () {
+            return progress;
+        }
+    };
+});
+
+app.factory('httpInject', function ($rootScope) {
+    return {
+        request: function (request) {
+            $rootScope.loadingItem.push(request.url);
+            return request;
+        },
+        response: function (response) {
+            $rootScope.loadingItem.splice($rootScope.loadingItem.indexOf(response.config.url), 1);
+            return response;
+        },
+        requestError: function(err) {
+            console.log('request' + err);
+            return err;
+        },
+        responseError: function (response) {
+            $rootScope.loadingItem.splice($rootScope.loadingItem.indexOf(response.config.url), 1);
+            return response;
+        }
+    };
+});
+
+app.config(function ($httpProvider) {
+    $httpProvider.interceptors.push('httpInject');
+});
+        </code>
+    </pre>
+</div>
