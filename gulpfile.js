@@ -52,6 +52,7 @@ gulp.task('watch', function () {
     gulp.watch('src/scripts/**/*.js', ['compile:demo:js']);
     gulp.watch('src/styles/**/*.scss', ['compile:demo:css']);
     gulp.watch('src/tmpl/**/*.html', ['compile:demo:tmpl']);
+    gulp.watch('src/*.html', ['compile:html']);
 });
 
 gulp.task('compile', ['compile:html', 'compile:js', 'compile:css', 'compile:demo:tmpl']);
@@ -105,7 +106,7 @@ gulp.task('compile:demo:js', function () {
 });
 
 gulp.task('compile:demo:css', function () {
-    return gulp.src('src/styles/demo.scss')
+    return gulp.src('src/styles/*')
     .pipe($.sass({style: 'expanded'}))
     .pipe($.autoprefixer({browsers: ['last 2 versions']}))
     .pipe(gulp.dest('dist/styles'));

@@ -1,0 +1,47 @@
+@import 'color';
+@import 'variable';
+
+.ck-progress-wrapper{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+}
+.ck-progress-bar{
+    width: 0;
+    position: relative;
+    transition: all .3s;
+}
+.ck-progress-bar,.ck-progress-bar-inner{
+    display: block;
+    height: 0.2*$size-base;
+}
+.ck-progress-bar-inner{
+    position: absolute;
+    top: 0.1*$size-base;
+    right: 0;
+    width: 10*$size-base;
+    transition: all .3s;
+    transform:rotate(2deg) translate(0,-4px);
+}
+.ck-progress-circle{
+    position: absolute;
+    top: 2*$size-base;
+    right: 2*$size-base;
+    display: block;
+    width: 1.5*$size-base;
+    height: 1.5*$size-base;
+    border:2px solid transparent;
+    border-radius:50%;
+    animation:spin .4s linear infinite;
+    transition:border .3s;
+}
+@keyframes spin{
+    0% {
+        transform:rotate(0);
+    }
+    100% {
+        transform:rotate(360deg);
+    }
+}

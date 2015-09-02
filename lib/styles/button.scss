@@ -1,0 +1,83 @@
+@import 'color';
+@import 'variable';
+.ck-btn {
+    display: inline-block;
+    padding: 0.7*$size-base 4*$size-base;
+    border: none;
+    border-radius: 0.2*$size-base;
+    outline: none;
+    font-size: 1.4*$size-base;
+    color: $button-default-color;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s ease-out;
+    background: $button-default-background;
+
+    &:hover {
+        background: $button-background;
+    }
+}
+
+.ck-btn.ck-btn-primary {
+    color: $button-primary-color;
+}
+
+.ck-btn.ck-btn-danger {
+    color: $button-danger-color;
+}
+
+.ck-btn.ck-btn-warning {
+    color: $button-warning-color;
+}
+
+.ck-btn.ck-btn-disabled {
+    cursor: not-allowed;
+    color: $button-disabled-color !important;
+    background: $button-background !important;
+}
+
+.ck-btn.ck-btn-raised {
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+    background: $button-raised-background;
+    transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    &:hover {
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    &:active {
+        box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);
+        transition-delay: 0s;
+    }
+}
+
+.ck-btn.ck-btn-round {
+    width: 5*$size-base;
+    height: 5*$size-base;
+    padding: 1*$size-base;
+    font-size: 2.5*$size-base;
+    border-radius: 100%;
+}
+
+.ck-btn.ck-btn-blue {
+    color: $white;
+    background: $button-blue;
+}
+
+.ck-btn.ck-btn-red {
+    color: $white;
+    background: $button-red;
+}
+
+.ck-btn.ck-btn-green {
+    color: $white;
+    background: $button-green;
+}
+
+.ck-btn.ck-btn-yellow {
+    color: $white;
+    background: $button-yellow;
+}
+
+.ck-btn.ck-btn-grey {
+    color: $button-default-color;
+    background: $button-background;
+}

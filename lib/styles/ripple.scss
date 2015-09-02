@@ -1,0 +1,54 @@
+@import 'color';
+@import 'variable';
+.ck-ripple {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    user-select: none;
+    overflow: hidden;
+    .ck-ripple-ink {
+        position: absolute;
+        display: inline-block;
+        border-radius: 100%;
+        transform: scale(0);
+        // opacity: 0;
+        background: $ripple-default;
+        z-index: 1;
+    }
+    .ck-ripple-animate {
+        animation: ripple 0.5s linear;
+    }
+}
+.ck-ripple.ck-ripple-blue .ck-ripple-ink {
+    background: $ripple-blue;
+}
+
+.ck-ripple.ck-ripple-yellow .ck-ripple-ink {
+    background: $ripple-yellow;
+}
+
+.ck-ripple.ck-ripple-pink .ck-ripple-ink {
+    background: $ripple-pink;
+}
+
+.ck-ripple.ck-ripple-red .ck-ripple-ink {
+    background: $ripple-red;
+}
+
+.ck-ripple.ck-ripple-white .ck-ripple-ink {
+    background: $ripple-white;
+}
+
+.ck-ripple.ck-ripple-black .ck-ripple-ink {
+    background: $ripple-black;
+}
+
+@keyframes ripple {
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: scale(5);
+    }
+}

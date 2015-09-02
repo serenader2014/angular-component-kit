@@ -14,19 +14,21 @@
     <!-- endinject -->
     <link rel="stylesheet" href="styles/angular-component-kit.css">
     <link rel="stylesheet" href="styles/demo.css">
+    <link rel="stylesheet" href="styles/prism.css">
     <!-- endbuild -->
 </head>
 <body ng-controller="ctrl">
     <h1 class="title">Angular Component kit</h1>
     <p class="description">A set of easy use, and common component kit. The main idea is to help developer to quick develop.</p>
 
-    <demo data="data" ng-repeat="component in components" name="component.name" tmpl="component.tmpl"></demo>
+    <demo data="data" ng-repeat="component in components" t="component.type" name="component.name" tmpl="component.tmpl"></demo>
 
     <!-- build:js dist/scripts/bundle.js -->
     <!-- bower:js -->
     <!-- endinject -->
     <script type="text/javascript" src="scripts/angular-component-kit.js"></script>
     <script type="text/javascript" src="scripts/demo.js"></script>
+    <script type="text/javascript" src="scripts/prism.js"></script>
     <!-- endbuild -->
 </body>
 </html>
