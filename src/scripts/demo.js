@@ -64,7 +64,7 @@ app.controller('ctrl', function ($scope, $rootScope, $http, $timeout, networkPro
 app.directive('demo', function ($compile) {
     return {
         template: ['<div class="component-item">',
-            '<h2><code>{{name}}</code> {{t}}</h2>',
+            '<h2><code>{{name}}</code> <span class="component-type {{t}}">{{t}}</span></h2>',
             '<p>Demo:</p>',
             '<div class="demo"></div>',
             '<div ng-hide="hideCode"><p>Code:</p>',

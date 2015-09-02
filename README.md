@@ -16,7 +16,7 @@ var app = angular.module('myApp', ['ngComponentKit', 'other dependencies']);
 
 ## Detail component list
 
-### `ck-input` directive
+**`ck-input` directive**
 
 The `ck-input` directive is design to work in `<input />` tag. Put `ck-input` in `<input />` tag as an attribute, and add `desc` to the tag. `desc` is optional. Example code like this:
 
@@ -24,7 +24,7 @@ The `ck-input` directive is design to work in `<input />` tag. Put `ck-input` in
 <input type="text" ck-input ng-model="welcome" desc="'This is welcome text.'" ng-minlength="6">
 ```
 
-### `ck-ripple` directive
+**`ck-ripple` directive**
 
 The `ck-ripple` directive is design to work in `<button></button>` tag. Put `ck-ripple` in `<button></button>` tag as an attribute, and add some button's class.
 
@@ -38,6 +38,12 @@ The angular component kit pre-define a set of button style, you can select your 
 <button class="ck-btn ck-btn-green">button</button>
 <button class="ck-btn ck-btn-raised ck-btn-round ck-btn-red" ck-ripple>R</button>
 ```
+
+**`ck-modal` directive**
+
+
+**`ckProgressBar` service**
+
 
 ## How to develop
 
@@ -65,7 +71,7 @@ This project is in very early stage, api can be unstable. Use at your own risk.
 
 - [x] input directive with description
 - [x] button with ripple effect
-- [ ] modal with custom callback
-- [ ] progress bar
+- [x] modal with custom callback
+- [x] progress bar
 - [ ] notify
 - [ ] message box

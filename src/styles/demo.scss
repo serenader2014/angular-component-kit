@@ -1,3 +1,11 @@
+$color-gray: #eee;
+$color-white: #fff;
+$color-blue: #29b6f6;
+$color-red: #f36c60;
+
+$directive-color: darken($color-blue, 10%);
+$service-color: darken($color-red, 20%);
+
 html {
     padding: 0;
     margin: 0;
@@ -8,19 +16,19 @@ body {
     max-width: 980px;
     margin: 50px auto;
     padding: 20px;
-    background: #eee;
+    background: $color-gray;
 }
 code {
-    background: #eee;
+    background: $color-gray;
     padding: 3px;
-    border: 1px solid #ccc;
+    border: 1px solid darken($color-gray, 10%);
     border-radius: 5px;
 }
 pre {
-    background: #eee;
+    background: $color-gray;
     display: block;
     padding: 15px;
-    border: 1px solid #eee;
+    border: 1px solid $color-gray;
     border-radius: 5px;
     overflow: auto;
 }
@@ -41,17 +49,33 @@ pre code {
     text-align: center;
 }
 .component-item {
-    background: white;
+    background: $color-white;
     padding: 20px;
     margin-bottom: 20px;
-    border: 1px solid #ccc;
+    border: 1px solid darken($color-gray, 10%);
     transition: all 0.3s;
+    &:hover {
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
 }
-.component-item:hover {
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+.component-type {
+    display: inline-block;
+    padding: 2px 5px;
+    font-size: 16px;
+    color: $color-white;
+    border-radius: 5px;
+    margin-left: 10px;
+}
+.component-type.directive {
+    background: $directive-color;
+    border: 1px solid darken($directive-color, 5%);
+}
+.component-type.service {
+    background: $service-color;
+    border: 1px solid darken($service-color, 5%);
 }
 .demo {
     margin: 20px 0;
     padding-left: 20px;
-    border-left: 3px solid #eee;
+    border-left: 3px solid $color-gray;
 }
