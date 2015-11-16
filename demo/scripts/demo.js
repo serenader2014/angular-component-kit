@@ -2,20 +2,26 @@
 
 var app = angular.module('app', ['ngComponentKit', 'ngSanitize']);
 
-app.controller('ctrl', function ($scope, $rootScope, $http, $timeout, networkProgress, ckProgressBar) {
-    var componentsList = [{
-        name: 'ck-input',
-        type: 'directive'
-    },{
-        name: 'ck-ripple',
-        type: 'directive'
-    }, {
-        name: 'ck-modal',
-        type: 'directive'
-    }, {
-        name: 'ck-progress-bar',
+app.controller('ctrl', function ($scope, $rootScope, $http, $timeout, networkProgress, ckProgressBar, ckNotify) {
+    var componentsList = [
+    // {
+    //     name: 'ck-input',
+    //     type: 'directive'
+    // },{
+    //     name: 'ck-ripple',
+    //     type: 'directive'
+    // }, {
+    //     name: 'ck-modal',
+    //     type: 'directive'
+    // }, {
+    //     name: 'ck-progress-bar',
+    //     type: 'service'
+    // },
+    {
+        name: 'ck-notification',
         type: 'service'
     }];
+
     var progress = ckProgressBar.createInstance();
     $rootScope.loadingItem = [];
     $scope.components = [];
@@ -48,6 +54,9 @@ app.controller('ctrl', function ($scope, $rootScope, $http, $timeout, networkPro
         $http.get('/').success(function (data) {
             console.log(data);
         });
+    };
+    $scope.notify = function (type) {
+        ckNotify[type](type + ' notification demo');
     };
     $scope.testModal = 'this is original content';
     angular.forEach(componentsList, function (item) {

@@ -1,0 +1,26 @@
+.ck-notification {
+    position: fixed;
+    padding: 13px 60px 13px 13px;
+    border-radius: 3px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    transition: all 0.3s;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    .ck-btn {
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        width: 50px;
+        padding: 0;
+    }
+}
+.ck-notification.ck-normal {
+    background: $white;
+    color: $dark-grey;
+    .ck-btn {
+        color: $red;
+    }
+}

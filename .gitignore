@@ -3,4 +3,5 @@ node_modules
 npm-debug.log
 dist
 prod
+.DS_Store
 .publish
