@@ -56,7 +56,19 @@ app.controller('ctrl', function ($scope, $rootScope, $http, $timeout, networkPro
         });
     };
     $scope.notify = function (type) {
-        ckNotify[type](type + ' notification demo');
+        ckNotify({
+            type: type,
+            msg: 'hello world',
+            position: {
+                top: true,
+                right: true,
+                // left: true,
+                // bottom: true
+            },
+            autoHide: false,
+            callback: function () {
+            }
+        });
     };
     $scope.testModal = 'this is original content';
     angular.forEach(componentsList, function (item) {
