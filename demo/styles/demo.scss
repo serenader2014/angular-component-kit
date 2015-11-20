@@ -10,7 +10,7 @@ html {
     padding: 0;
     margin: 0;
     font-size: 16px;
-    font-family: "Merriweather", serif, 'Helvetica Neue','Hiragino Sans GB','Microsoft YaHei','WenQuanYi Micro Hei';
+    font-family: 'Helvetica Neue','Hiragino Sans GB','Microsoft YaHei','WenQuanYi Micro Hei';
 }
 body {
     max-width: 980px;
@@ -23,6 +23,7 @@ code {
     padding: 3px;
     border: 1px solid darken($color-gray, 10%);
     border-radius: 5px;
+    font-family: Monaco, Consolas;
 }
 pre {
     background: $color-gray;
@@ -47,6 +48,7 @@ pre code {
     margin-bottom: 30px;
     font-style: italic;
     text-align: center;
+    font-family: serif;
 }
 .component-item {
     background: $color-white;
@@ -78,4 +80,14 @@ pre code {
     margin: 20px 0;
     padding-left: 20px;
     border-left: 3px solid $color-gray;
+    .ck-btn {
+        margin: 0 10px 10px 0;
+    }
+    hr {
+        display: block;
+        height: 1px;
+        border: 0;
+        border-top: 1px solid $color-gray;
+        margin: 30px 0;
+    }
 }

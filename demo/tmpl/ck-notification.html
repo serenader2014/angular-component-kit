@@ -1,4 +1,48 @@
+<p>
+    Notification position:
+    <label for="position-top">
+        <input id="position-top" type="checkbox" ng-model="position.top">
+        <span>Top</span>
+    </label>
+    <label for="position-bottom">
+        <input id="position-bottom" type="checkbox" ng-model="position.bottom">
+        <span>Bottom</span>
+    </label>
+    <label for="position-left">
+        <input id="position-left" type="checkbox" ng-model="position.left">
+        <span>Left</span>
+    </label>
+    <label for="position-right">
+        <input id="position-right" type="checkbox" ng-model="position.right">
+        <span>Right</span>
+    </label>
+</p>
 <button class="ck-btn ck-btn-raised" ng-click="notify('normal')" ck-ripple>show normal notify</button>
 <button class="ck-btn ck-btn-danger ck-btn-raised" ng-click="notify('error')" ck-ripple>show error notify</button>
 <button class="ck-btn ck-btn-warning ck-btn-raised" ng-click="notify('warning')" ck-ripple>show warning notify</button>
 <button class="ck-btn ck-btn-primary ck-btn-raised" ng-click="notify('success')" ck-ripple>show success notify</button>
+<hr>
+<p>The <code>ckNotify</code> service provides two kinds of usage:</p>
+<pre>
+    <code class="language-javascript">
+app.controller('ctrl', function ($scope, ckNotify) {
+    // passing an object as configuration
+    ckNotify({
+        type: 'success',         // notification type, available types: 
+                                 // ['normal', 'success', 'error', 'warning']
+        msg: 'msg content',      // notification message content
+        position: {
+            top: true,           // 'top' and 'bottom' can not use together
+            right: true          // while 'left' and 'right' can use together,
+                                 // it will appear in the center
+        },
+        autoHide: false,         // determine the notification to hide itself or not
+        callback: function () {} // a custom close callback is supported
+    });
+
+    // or use a shortcut way:
+    ckNotify.success('message here');
+    ckNotify.error('message here');
+});
+    </code>
+</pre>

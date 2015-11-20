@@ -18,21 +18,31 @@ angular.module('ngComponentKit').factory('ckNotify', function ($rootScope, $comp
         count += 1;
         var element = $compile('<notification></notification>')(scope);
         angular.element('body').append(element);
-        element.fadeIn();
+        setTimeout(function () {
+            element.addClass('ck-in');
+        }, 10);
         return scope;
     };
 
-    event.on('notification.rendered', function (id, height) {
-        heightMap[id] = height;
+    event.on('notification.rendered', function (option) {
+        var id = option.id;
+        var height = option.height;
+        var position = option.position;
+        heightMap[position] = heightMap[position] || {};
+        heightMap[position][id] = height;
         var top = 10;
-        angular.forEach(heightMap, function (height, id) {
-            event.emit('notification.' + id + '.rePosition', top);
+        angular.forEach(heightMap[position], function (height, id) {
+            event.emit('notification.' + id + '.' + position + '.rePosition', top);
             top += height + 10;
         });
     });
 
-    event.on('notification.close', function (id) {
-        event.emit('notification.rendered', id, -10);
+    event.on('notification.close', function (id, position) {
+        event.emit('notification.rendered', {
+            id: id,
+            height: -10,
+            position: position
+        });
     });
 
     notify.normal = function (msg) {
@@ -70,21 +80,32 @@ angular.module('ngComponentKit').factory('ckNotify', function ($rootScope, $comp
         replace: true,
         link: function (scope, element) {
             function rePosition (height) {
-                scope.style.top = height;
+                scope.style[position] = height;
                 scope.$digest();
             }
-            scope.style = {};
+            var position = scope.position.top ? 'top' : 'bottom';
+            scope.style = {
+                top: scope.position.top ? 0 : 'auto',
+                bottom: scope.position.bottom ? 0 : 'auto',
+                left: scope.position.left ? 10 : 'auto',
+                right: scope.position.right ? 10 : 'auto',
+            };
             setTimeout(function () {
-                event.emit('notification.rendered', scope.count, element.height() + 26);
+                event.emit('notification.rendered', {
+                    id: scope.count,
+                    height: element.height() + 26,
+                    position: position
+                });
             }, 10);
-            event.on('notification.' + scope.count + '.rePosition', rePosition);
+            event.on('notification.' + scope.count + '.' + position + '.rePosition', rePosition);
             scope.close = function () {
-                element.fadeOut(function () {
+                element.addClass('ck-close');
+                setTimeout(function () {
                     element.remove();
                     scope.$destroy();
-                    event.emit('notification.close', scope.count);
-                    event.off('notification.' + scope.count + '.rePosition', rePosition);
-                });
+                    event.emit('notification.close', scope.count, position);
+                    event.off('notification.' + scope.count + '.' + position + '.rePosition', rePosition);
+                }, 300);
                 if (typeof scope.callback === 'function') {
                     scope.callback.call(this, scope);
                 }

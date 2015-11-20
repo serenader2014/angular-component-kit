@@ -4,19 +4,19 @@ var app = angular.module('app', ['ngComponentKit', 'ngSanitize']);
 
 app.controller('ctrl', function ($scope, $rootScope, $http, $timeout, networkProgress, ckProgressBar, ckNotify) {
     var componentsList = [
-    // {
-    //     name: 'ck-input',
-    //     type: 'directive'
-    // },{
-    //     name: 'ck-ripple',
-    //     type: 'directive'
-    // }, {
-    //     name: 'ck-modal',
-    //     type: 'directive'
-    // }, {
-    //     name: 'ck-progress-bar',
-    //     type: 'service'
-    // },
+    {
+        name: 'ck-input',
+        type: 'directive'
+    },{
+        name: 'ck-ripple',
+        type: 'directive'
+    }, {
+        name: 'ck-modal',
+        type: 'directive'
+    }, {
+        name: 'ck-progress-bar',
+        type: 'service'
+    },
     {
         name: 'ck-notification',
         type: 'service'
@@ -55,18 +55,20 @@ app.controller('ctrl', function ($scope, $rootScope, $http, $timeout, networkPro
             console.log(data);
         });
     };
+    $scope.position = {
+        right: true,
+        top: true
+    };
     $scope.notify = function (type) {
         ckNotify({
             type: type,
-            msg: 'hello world',
-            position: {
-                top: true,
-                right: true,
-                // left: true,
-                // bottom: true
-            },
-            autoHide: false,
+            msg: 'Hello world, ' + type + ' notification test',
+            position: $scope.position,
+            autoHide: true,
             callback: function () {
+                if (['success', 'error'].indexOf(type) !== -1) {
+                    ckNotify.normal('This is custom close callback');
+                }
             }
         });
     };

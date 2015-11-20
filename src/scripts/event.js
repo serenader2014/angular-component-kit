@@ -31,6 +31,9 @@ angular.module('ngComponentKit').factory('event', function () {
             });
         },
         off: function (name, fn) {
+            if (!this.list[name]) {
+                return;
+            }
             if (!fn) {
                 this.list[name].splice(this.list[name].length);
             } else {
