@@ -47,8 +47,8 @@ gulp.task('serve', ['compile', 'watch'], function () {
 });
 
 gulp.task('watch', function () {
-    gulp.watch('src/scripts/**/*.js', ['compile:lib:js', 'build:js']);
-    gulp.watch('src/styles/**/*.scss', ['compile:lib:css', 'build:css']);
+    gulp.watch('src/**/*.js', ['compile:lib:js', 'build:js']);
+    gulp.watch('src/**/*.scss', ['compile:lib:css', 'build:css']);
     gulp.watch('demo/scripts/**/*.js', ['compile:demo:js']);
     gulp.watch('demo/styles/**/*.scss', ['compile:demo:css']);
     gulp.watch('demo/tmpl/**/*.html', ['compile:demo:tmpl']);
@@ -82,14 +82,25 @@ gulp.task('compile:js', ['compile:lib:js', 'compile:demo:js']);
 gulp.task('compile:css', ['compile:lib:css', 'compile:demo:css']);
 
 gulp.task('compile:lib:css', function () {
-    return gulp.src('src/styles/angular-component-kit.scss')
+    return gulp.src('src/angular-component-kit.scss')
     .pipe($.sass({style: 'expanded'}))
     .pipe($.autoprefixer({browsers: ['last 2 versions']}))
     .pipe(gulp.dest('dist/styles'));
 });
 
-gulp.task('compile:lib:js', function () {
-    return gulp.src('src/scripts/**/*.js')
+gulp.task('compile:lib:tmpl', function () {
+    return gulp.src('src/**/*.html')
+    .pipe($.minifyHtml({empty: true, quotes: true}))
+    .pipe($.ngTemplate({
+        moduleName: 'ngComponentKitTmpl',
+        standalone: true,
+        filePath: 'template.js'
+    }))
+    .pipe(gulp.dest('src'));
+});
+
+gulp.task('compile:lib:js', ['compile:lib:tmpl'], function () {
+    return gulp.src('src/**/*.js')
     .pipe($.ngAnnotate({single_quotes: true}))
     .pipe($.jshint())
     .pipe($.jshint.reporter())
@@ -120,7 +131,7 @@ gulp.task('compile:demo:tmpl', function () {
 gulp.task('build', ['build:js', 'build:css']);
 
 gulp.task('build:js', function () {
-    return gulp.src('src/scripts/**/*.js')
+    return gulp.src('src/**/*.js')
     .pipe($.jshint())
     .pipe($.jshint.reporter())
     .pipe($.concat('angular-component-kit.min.js'))
@@ -129,7 +140,7 @@ gulp.task('build:js', function () {
 });
 
 gulp.task('build:css', function () {
-    return gulp.src('src/styles/angular-component-kit.scss')
+    return gulp.src('src/angular-component-kit.scss')
     .pipe($.sass({styles: 'compressed'}))
     .pipe($.autoprefixer({browsers: ['last 2 versions']}))
     .pipe($.minifyCss())

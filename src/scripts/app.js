@@ -1,1 +1,0 @@
-angular.module('ngComponentKit', ['ngAnimate']);

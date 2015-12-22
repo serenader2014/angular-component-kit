@@ -73,9 +73,7 @@ angular.module('ngComponentKit').factory('ckNotify', function ($rootScope, $comp
     return notify;
 }).directive('notification', function (event) {
     var obj = {
-        template: ['<div class="ck-notification ck-{{type}}" ng-style="style"',
-                    '><span>{{msg}}</span><button class="ck-btn" ck-ripple ',
-                    'ng-click="close()">Close</button></div>'].join(''),
+        templateUrl: 'notification/notification.html',
         restrict: 'E',
         replace: true,
         link: function (scope, element) {

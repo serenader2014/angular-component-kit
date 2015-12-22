@@ -1,0 +1,1 @@
+angular.module('ngComponentKit', ['ngAnimate', 'ngComponentKitTmpl']);

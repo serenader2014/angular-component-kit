@@ -1,14 +1,6 @@
 angular.module('ngComponentKit').directive('ckModal', function () {
     return {
-        template: ['<div tabindex="-1" ng-class="{active: active}" ng-blur="blur()"',
-            'ng-focus="focus()" ng-show="show" class="ck-modal" ck-drag=".ck-modal-head" >',
-            '<div class="ck-modal-head">{{title}}</div>',
-            '<div class="ck-modal-body" ng-transclude></div>',
-            '<div class="ck-modal-foot">',
-            '<button ng-click="ok()" class="ck-btn ck-btn-blue" ck-ripple>Comfirm</button>',
-            '<button ng-click="off($event)" class="ck-btn" ck-ripple="black">Close</button>',
-            '</div></div>'
-            ].join(''),
+        templateUrl: 'modal/modal.html',
         transclude: true,
         scope: {
             title  : '=name',
