@@ -47,7 +47,7 @@ gulp.task('serve', ['compile', 'watch'], function () {
 });
 
 gulp.task('watch', function () {
-    gulp.watch('src/**/*.js', ['compile:lib:js', 'build:js']);
+    gulp.watch(['src/**/*.js', 'src/**/*.html'], ['compile:lib:js', 'build:js']);
     gulp.watch('src/**/*.scss', ['compile:lib:css', 'build:css']);
     gulp.watch('demo/scripts/**/*.js', ['compile:demo:js']);
     gulp.watch('demo/styles/**/*.scss', ['compile:demo:css']);

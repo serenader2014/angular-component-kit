@@ -20,13 +20,16 @@ angular.module('ngComponentKit').directive('ckModal', function () {
                 scope.$watch('show', function (show) {
                     scope.active = !!show;
                     if (show) {
-                        element.css({
-                            top: doc.scrollTop() +200,
+                        element.find('.ck-modal').css({
+                            top: 200,
                             left: doc.width()/2 - 400
                         });
                         element.find('.ck-modal-body').css({
                             maxHeight: screenHeight - 400
                         });
+                        angular.element('body').addClass('ck-modal-open');
+                    } else {
+                        angular.element('body').removeClass('ck-modal-open');
                     }
                 });
             } else {
