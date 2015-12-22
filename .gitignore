@@ -5,3 +5,4 @@ dist
 prod
 .DS_Store
 .publish
+src/template.js
